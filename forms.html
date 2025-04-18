@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Trafficking | Human Trafficking Awareness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0c0c0c;
+      color: #f1f1f1;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #1e1e1e;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 2px solid #f1f1f133;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+      animation: slideIn 1.5s ease-out forwards, fadeUp 2s ease-out;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .section:nth-child(odd) {
+      background: #1a1a1a;
+    }
+
+    .section img {
+      max-width: 40%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: transform 0.5s ease;
+    }
+
+    .section img:hover {
+      transform: scale(1.05);
+      animation: slideRight 1s ease forwards;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: auto;
+      text-align: justify;
+    }
+
+    .content h2 {
+      font-size: 2rem;
+      color: #ff4757;
+      animation: fadeInText 2s ease-in-out;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideRight {
+    0% {
+        transform: translateX(0); /* Start at original position */
+    }
+    100% {
+        transform: translateX(200px); /* Move 200px to the right */
+    }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Child Trafficking</h1>
+    <p>Part of the Human Trafficking Awareness Project</p>
+  </header>
+
+  <div class="section">
+    <div class="content">
+      <h2>Forms of Child Trafficking</h2>
+      <p>
+        Child trafficking takes many forms, often hidden behind false promises or coercion. Common types include:
+      </p>
+      <ul>
+        <li><strong>Sexual Exploitation:</strong> Children are forced into prostitution, pornography, or sex tourism.</li>
+        <li><strong>Forced Labor:</strong> Victims work in agriculture, mining, factories, or as domestic servants with no pay or rights.</li>
+        <li><strong>Illegal Adoptions:</strong> Children are kidnapped or sold and trafficked across borders under false legal pretenses.</li>
+      </ul>
+      <img id="photo_1" src="photos/preview (1).webp" alt="Sad child representing trafficking victims">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="content">
+      <h2>Tactics Used by Traffickers</h2>
+      <p>
+        Traffickers use a range of deceptive and violent tactics to recruit, control, and transport children:
+      </p>
+      <ul>
+        <li><strong>Grooming:</strong> Building trust before exploiting the child.</li>
+        <li><strong>False Promises:</strong> Offering jobs, education, or a better life.</li>
+        <li><strong>Document Fraud:</strong> Falsifying passports and birth certificates.</li>
+        <li><strong>Isolation:</strong> Moving children far from their homes to prevent escape or help.</li>
+      </ul>
+      <img src="https://cdn.cfr.org/sites/default/files/styles/open_graph_article/public/image/2021/02/human-trafficking-protest.jpg" alt="Image showing trafficking concept">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="content">
+      <h2>Organized Crime and International Networks</h2>
+      <p>
+        Child trafficking is often controlled by powerful crime syndicates that operate internationally. These networks:
+      </p>
+      <ul>
+        <li>Engage in human trafficking alongside drugs and arms smuggling.</li>
+        <li>Have corrupt officials to facilitate illegal adoptions and transport.</li>
+        <li>Use digital platforms and dark web services to trade children anonymously.</li>
+      </ul>
+      <img src="https://pbs.twimg.com/media/FM2noQ1XIAQ6WQE.jpg" alt="Human trafficking network illustration">
+    </div>
+  </div>
+
+  <script>
+    // Slide-in animation trigger
+    const sections = document.querySelectorAll('.section');
+    const options = {
+      threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
