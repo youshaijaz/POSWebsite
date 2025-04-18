@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prevention of Child Trafficking | Human Trafficking Awareness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #1a1aff, #ff4d4d);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #111;
+      padding: 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      color: #00ffff;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateX(100px);
+      transition: all 1s ease-in-out;
+    }
+
+    .slide-in-left {
+      transform: translateX(-100px);
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .section:nth-child(even) {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #00ffcc;
+    }
+
+    p, li {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    canvas {
+      margin-top: 2rem;
+      width: 100% !important;
+      max-width: 600px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section .content img{
+        width: 900px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prevention of Child Trafficking</h1>
+  </header>
+
+  <div class="section">
+    <div class="content">
+      <h2>Community Awareness & Education</h2>
+      <p>Educating the community is key to preventing child trafficking. Schools, parents, and NGOs must inform children about potential dangers and safe practices.</p>
+      <img src="https://laurenskids.org/wp-content/uploads/2021/02/YQABLM7ZLBAOFGM35DRJ7HEG6A.jpg" alt="Community education to prevent child trafficking">
+    </div>
+  </div>
+
+  <div class="section slide-in-left">
+    <div class="content">
+      <h2>Role of Law Enforcement</h2>
+      <p>Police play a crucial role by monitoring trafficking hotspots, conducting raids, and rescuing victims. Specialized anti-trafficking units are trained to handle sensitive cases.</p>
+      <img src="https://www.cbp.gov/sites/default/files/assets/frontline-articles/parallax-photos/2019-Dec/CBP%20190611-H-D0456-001-E%203.jpg" alt="Police officers working to prevent trafficking">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="content">
+      <h2>Early Warning Signs</h2>
+      <ul>
+        <li>Unexplained absences or sudden behavioral changes</li>
+        <li>New expensive items without explanation</li>
+        <li>Fearfulness, anxiety, or submissive behavior</li>
+        <li>Lack of identification documents</li>
+      </ul>
+      <img src="https://www.howardcountymd.gov/sites/default/files/styles/image_560_x_408_/public/2021-04/HumanTraffickingIMAGEII.jpg?itok=pePSqOjY" alt="Warning signs in children">
+    </div>
+  </div>
+
+  <div class="section slide-in-left">
+    <div class="content">
+      <h2>Statistics & Prevention Trends</h2>
+      <p>The following graph shows the increase in awareness programs and successful rescue operations by authorities in recent years.</p>
+      <canvas id="preventionChart"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.section').forEach((sec, i) => {
+      if (i % 2 !== 0) sec.classList.add('slide-in-left');
+      observer.observe(sec);
+    });
+
+    const ctx = document.getElementById('preventionChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+        datasets: [{
+          label: 'Rescued Children',
+          data: [120, 180, 250, 300, 400, 500],
+          backgroundColor: 'rgba(0, 255, 255, 0.3)',
+          borderColor: '#00ffff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: { color: '#fff' }
+          }
+        },
+        scales: {
+          x: { ticks: { color: '#fff' } },
+          y: { ticks: { color: '#fff' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
