@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Causes of Human & Child Trafficking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #002b45;
+      padding: 2rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateX(100px);
+      transition: all 1s ease-in-out;
+      background-color: #fff;
+    }
+
+    .section.alt {
+      transform: translateX(-100px);
+      background-color: #f0f8ff;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #002b45;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    canvas {
+      margin-top: 2rem;
+      width: 100% !important;
+      max-width: 700px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Root Causes of Human & Child Trafficking</h1>
+  </header>
+
+  <div class="section">
+    <div class="content">
+      <h2>Poverty and Lack of Opportunities</h2>
+      <p>Families living in extreme poverty often become vulnerable to traffickers promising jobs, education, or better living conditions.</p>
+    </div>
+  </div>
+
+  <div class="section alt">
+    <div class="content">
+      <h2>Conflict and Displacement</h2>
+      <p>Wars and natural disasters displace families, especially children, making them easy targets for exploitation.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="content">
+      <h2>Lack of Education and Awareness</h2>
+      <p>Uninformed individuals are more likely to fall victim to trafficking schemes due to lack of knowledge about the dangers and signs.</p>
+    </div>
+  </div>
+
+  <div class="section alt">
+    <div class="content">
+      <h2>Weak Law Enforcement</h2>
+      <p>Poor regulations, corruption, and weak legal structures allow traffickers to operate with minimal risk of punishment.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="content">
+      <h2>Bar Chart: Causes of Trafficking Ranked by Harm</h2>
+      <p>This chart represents causes based on their impact, from most harmful to least.</p>
+      <canvas id="causesChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.section').forEach((section, index) => {
+      if (index % 2 !== 0) {
+        section.classList.add('alt');
+      }
+      observer.observe(section);
+    });
+
+    const ctx = document.getElementById('causesChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Poverty & Lack of Opportunities',
+          'Conflict & Displacement',
+          'Lack of Education & Awareness',
+          'Weak Law Enforcement'
+        ],
+        datasets: [{
+          label: 'Harm Level (1 = Least, 10 = Most)',
+          data: [10, 8, 7, 6],
+          backgroundColor: [
+            '#d7263d',
+            '#f46036',
+            '#2e86ab',
+            '#1b998b'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 10,
+            ticks: {
+              stepSize: 1
+            }
+          }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
