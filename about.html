@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Causes of Human & Child Trafficking | Human Trafficking Awareness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #2d3e50;
+      padding: 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      color: #fff;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-in-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #2d3e50;
+    }
+
+    p, li {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .member {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      text-align: center;
+      width: 220px;
+      transition: transform 0.5s ease, opacity 1s ease, transform 1s ease;
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+
+    .member.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .member:hover {
+      transform: translateY(-10px);
+    }
+
+    .member img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    canvas {
+      margin-top: 2rem;
+      width: 100% !important;
+      max-width: 600px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Causes of Human & Child Trafficking</h1>
+  </header>
+
+  <div class="section">
+    <div class="content">
+      <h2>Major Causes</h2>
+      <p>Human and child trafficking is driven by numerous social, economic, and political factors. Below is a bar chart displaying the impact of various causes, ranked from most to least harmful:</p>
+      <canvas id="causeChart"></canvas>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="content">
+      <h2>About Our Team</h2>
+      <p>Meet the dedicated team behind this project working to raise awareness about human trafficking:</p>
+      <div class="team">
+        <div class="member">
+          <img src="photos/yousha.png" alt="Yousha - Tech Lead">
+          <h3>Yousha</h3>
+          <p>Website Developer & Tech Lead</p>
+        </div>
+        <div class="member">
+          <img src="photos/ayan.jpg" alt="Ayan - Causes">
+          <h3>Ayan</h3>
+          <p>Research Lead - Causes of Trafficking</p>
+        </div>
+        <div class="member">
+          <img src="photos/talha.png" alt="Talha - Forms">
+          <h3>Talha</h3>
+          <p>Analyst - Types and Forms of Trafficking</p>
+        </div>
+        <div class="member">
+          <img src="photos/roohan.png" alt="Roohan - Prevention">
+          <h3>Roohan</h3>
+          <p>Strategist - Prevention & Law Enforcement</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.section').forEach((sec) => {
+      observer.observe(sec);
+    });
+
+    document.querySelectorAll('.member').forEach((member, index) => {
+      const delay = 300 * index;
+      setTimeout(() => {
+        observer.observe(member);
+      }, delay);
+    });
+
+    const ctx = document.getElementById('causeChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Poverty', 'Lack of Education', 'Conflict Zones', 'Organized Crime', 'Gender Discrimination', 'Lack of Law Enforcement'],
+        datasets: [{
+          label: 'Impact Level',
+          data: [95, 85, 75, 70, 65, 60],
+          backgroundColor: 'rgba(44, 62, 80, 0.7)',
+          borderColor: '#2d3e50',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { labels: { color: '#222' } }
+        },
+        scales: {
+          x: { ticks: { color: '#222' } },
+          y: { ticks: { color: '#222' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
